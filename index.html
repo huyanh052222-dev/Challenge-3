@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đánh giá trang Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="testimonial-container">
+    <div class="testimonial active">
+      <img src="quan-pho-cua-anh-hai-2.jpg" alt="avatar" class="avatar">
+      <p>"Thật sự ấn tượng với cách họ làm việc. Mỗi bước đều rõ ràng, minh bạch và không hề gây phiền hà."</p>
+      <h4>Anh Hai Bán Phở</h4>
+      <span>Đầu bếp Phở Hà Nội</span>
+    </div>
+
+    <div class="testimonial">
+      <img src="https://i.pravatar.cc/150?img=5" alt="avatar" class="avatar">
+      <p>"Chất lượng ổn định, dịch vụ chu đáo, chắc chắn sẽ quay lại lần sau."</p>
+      <h4>Trinh Gà</h4>
+      <span>Lập trình viên</span>
+    </div>
+
+    <div class="testimonial">
+      <img src="sontung.jpg" alt="avatar" class="avatar">
+      <p>"Mình rất hài lòng, mọi thứ từ tư vấn đến giao hàng đều chuyên nghiệp."</p>
+      <h4>Sơn Tùng MTP</h4>
+      <span>Ca sĩ</span>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="prev">‹</button>
+      <button class="btn" id="next">›</button>
+    </div>
+  </div>
+
+
+
+  <!-- Cái đống script này mới nè =)) -->
+
+  <script>
+    // Gọi tất cả hàm mang tên "testimoial" về giá trị, vị trí số 0 trong mảng
+    // Nói cách khác là đưa tất cả về 1 biến để gọi
+    const testimonials = document.querySelectorAll('.testimonial');
+    // hiển thị biến/ testimoial đầu tiên ra màn hình
+    let index = 0; 
+
+    // Hàm số thứ tự biến i cần hiển thị, giống for(i) bên C/C++ (THeo mình là z =)))) )
+    // forEach là hàm lặp
+    // Nếu hàm idx == i thì hiện ra (active), nếu khác i thì ko hiện ra (Bị ẩn đi)
+    function showTestimonial(i) {
+      testimonials.forEach((t, idx) => {
+        t.classList.toggle('active', idx === i);
+      });
+    }
+
+    // Nút tiến tới: index đang là 0 nên phải cộng thêm 1 để tiến tới slide kế tiếp, ví dụ +2 thì tới 2 slide (maybe)
+    // %testimonials là hàm để đưa slide vào vòng lặp vô hạn, slide đầu số 0 bị đẩy ra sẽ nối theo slide cuối trong mảng Testimonials
+    document.getElementById('next').onclick = () => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    };
+
+    //Tương tự nút tiến, nhưng khác là phải cộng trc cái testimonials vì tránh prev ngay trang đầu (Sẽ nhận index = -1)
+    document.getElementById('prev').onclick = () => {
+      index = (index - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(index);
+    };
+
+    // Đây là 1 hàm tự chạy (auto run) sau 5000ms (5 giây)
+    setInterval(() => {
+      index = (index + 1) % testimonials.length;
+      showTestimonial(index);
+    }, 5000);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+body {
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+.testimonial-container {
+    width: 480px;
+    background: #c3d1eb;
+    border-radius: 45px;
+    box-shadow: 0 6px 10px 2px rgba(0, 0, 0, 0.419);
+    overflow: hidden;
+    text-align: center;
+    padding: 40px 25px;
+    transition: transform 0.5s ease;
+}
+
+.testimonial {
+    display: none;
+    animation: fade 0.6s ease;
+}
+
+.testimonial.active {
+    display: block;
+}
+
+/* Gọi hàm cho khối testimonial chạy animation */
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #a5b4fc;
+}
+
+.testimonial p {
+    font-size: 25px;
+    font-weight: 400;
+    color: #383838;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.testimonial h4 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.testimonial span {
+    font-size: 13px;
+    color: #888;
+}
+
+.controls {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn {
+    background: #e2e8f0;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.7s, transform 0.3s;
+}
+
+.btn:hover {
+    background: #8594e0;
+    color: white;
+    transform: scale(1.15);
+}
